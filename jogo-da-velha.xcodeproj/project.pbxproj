@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DFC8B6C62A1C598A000F9738 /* jogo_da_velhaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC8B6C52A1C598A000F9738 /* jogo_da_velhaApp.swift */; };
-		DFC8B6C82A1C598A000F9738 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC8B6C72A1C598A000F9738 /* ContentView.swift */; };
+		DFC8B6C82A1C598A000F9738 /* initView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC8B6C72A1C598A000F9738 /* initView.swift */; };
 		DFC8B6CA2A1C598D000F9738 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC8B6C92A1C598D000F9738 /* Assets.xcassets */; };
 		DFC8B6CD2A1C598D000F9738 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC8B6CC2A1C598D000F9738 /* Preview Assets.xcassets */; };
 		DFC8B6D72A1C598D000F9738 /* jogo_da_velhaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC8B6D62A1C598D000F9738 /* jogo_da_velhaTests.swift */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		DFC8B6C22A1C598A000F9738 /* jogo-da-velha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "jogo-da-velha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC8B6C52A1C598A000F9738 /* jogo_da_velhaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jogo_da_velhaApp.swift; sourceTree = "<group>"; };
-		DFC8B6C72A1C598A000F9738 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DFC8B6C72A1C598A000F9738 /* initView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = initView.swift; sourceTree = "<group>"; };
 		DFC8B6C92A1C598D000F9738 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFC8B6CC2A1C598D000F9738 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DFC8B6D22A1C598D000F9738 /* jogo-da-velhaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "jogo-da-velhaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,8 +94,9 @@
 		DFC8B6C42A1C598A000F9738 /* jogo-da-velha */ = {
 			isa = PBXGroup;
 			children = (
+				DFE209582A1C6DCA0010B7C6 /* View */,
 				DFC8B6C52A1C598A000F9738 /* jogo_da_velhaApp.swift */,
-				DFC8B6C72A1C598A000F9738 /* ContentView.swift */,
+				DFC8B6C72A1C598A000F9738 /* initView.swift */,
 				DFC8B6C92A1C598D000F9738 /* Assets.xcassets */,
 				DFC8B6CB2A1C598D000F9738 /* Preview Content */,
 			);
@@ -125,6 +126,13 @@
 				DFC8B6E22A1C598D000F9738 /* jogo_da_velhaUITestsLaunchTests.swift */,
 			);
 			path = "jogo-da-velhaUITests";
+			sourceTree = "<group>";
+		};
+		DFE209582A1C6DCA0010B7C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFC8B6C82A1C598A000F9738 /* ContentView.swift in Sources */,
+				DFC8B6C82A1C598A000F9738 /* initView.swift in Sources */,
 				DFC8B6C62A1C598A000F9738 /* jogo_da_velhaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
