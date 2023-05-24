@@ -47,9 +47,18 @@ struct ContentView: View {
                                 
                             }.onTapGesture {
                                 
-                                if isSquareOccupied(in: movimentos, forIndex: i){return}
-                                movimentos[i] = Move(jogador: partidaDoJogador ? .humano: .maquina, quadroIndex: i)
-                                partidaDoJogador.toggle()
+                                if isSquareOccupied(in: movimentos, forIndex: i){ return }
+                                movimentos[i] = Move(jogador: .humano, quadroIndex: i)
+                              //  movimentos[i] = Move(jogador: partidaDoJogador ? .humano: .maquina, quadroIndex: i)
+                                //partidaDoJogador.toggle()
+                                
+                                //check for win condition or draw
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                                    
+                                    let maquinaPosicao = determinaMaquinaMoverPosicao(in: movimentos )
+                                    movimentos[maquinaPosicao] = Move(jogador: .maquina, quadroIndex: maquinaPosicao)
+                                    
+                                }
                         }
                     }
                 }
@@ -63,6 +72,16 @@ struct ContentView: View {
     }
     func isSquareOccupied(in moves: [Move?], forIndex index: Int) -> Bool {
         return moves.contains(where: { $0?.quadroIndex == index })
+    }
+    
+    func determinaMaquinaMoverPosicao(in moves: [Move?]) -> Int{
+        var movimentaPosicao = Int.random(in: 0..<9)
+        
+        while isSquareOccupied(in: moves, forIndex: movimentaPosicao) {
+             movimentaPosicao = Int.random(in: 0..<9)
+        }
+        
+    return movimentaPosicao
     }
 }
 /* Aqui, estamos definindo uma enumeração chamada Jogador. Essa enumeração possui dois casos: jogador e maquina, que representam os possíveis jogadores em um jogo. */
