@@ -12,12 +12,12 @@ var nome =  "vish"
 struct ContentView: View {
     
     let colunas: [GridItem] = [GridItem(.flexible()),  GridItem(.flexible()), GridItem(.flexible()),]
-
-    @State private var movimentos: [Move?] = Array(repeating: nil, count: 9)
-    @State private var partidaDoJogador = true
+    
+    @State private var movimentos: [Mover?] = Array(repeating: nil, count: 9)
+    @State private var jogouFicaSemJogar = false
     
     var body: some View {
-       
+        
         /* GeometryReader é um contêiner de visualização que permite acessar informações de layout e geometria da visualização pai. A palavra-chave in é usada para delimitar o escopo da cláusula de fechamento. */
         GeometryReader{ geometry in
             Color(.yellow).opacity(0.9)
@@ -32,58 +32,106 @@ struct ContentView: View {
                     ForEach(0..<9){ i in
                         
                         ZStack{
-                          
-                           Circle()
+                            
+                            ZStack{
+                                
+                                Circle()
+                            }
                                 .foregroundColor(.white).opacity(10)
                                 .frame(width: geometry.size.width / 3 - 15,
                                        height: geometry.size.width / 3 - 15)
+                            ZStack{
+                                Circle()
+                                    .frame(width:40,height: 40)
+                                    .foregroundColor(.yellow).opacity(0.4)
+                            }
                             
-                                Image(movimentos[i]?.indicarJogador ?? "")
-                                // O método resizable() permite que a imagem se ajuste ao tamanho especificado.
-                                    .resizable()
-                                // Aqui estamos definindo o tamanho do quadro da imagem como 100x100 pontos.
-                                    .frame(width:140,height: 140)
-                                    .foregroundColor(.white)
+                            Image(movimentos[i]?.indicarJogador ?? "")
+                            // O método resizable() permite que a imagem se ajuste ao tamanho especificado.
+                                .resizable()
+                            // Aqui estamos definindo o tamanho do quadro da imagem como 100x100 pontos.
+                                .frame(width:140,height: 140)
+                                .foregroundColor(.white)
+                            
+                        }.onTapGesture {
+                            
+                            if posicaoOcupada(in: movimentos, forIndex: i){ return }
+                            movimentos[i] = Mover(jogador: .humano, quadroIndex: i)
+                            jogouFicaSemJogar = true
+                            //  movimentos[i] = Move(jogador: partidaDoJogador ? .humano: .maquina, quadroIndex: i)
+                            //partidaDoJogador.toggle()
+                            
+                            if verificarVencedor(for: .humano, in: movimentos){
+                                print("Vitoria do homer")
+                                return
+                            }
+                            if verificaImpate(in: movimentos){
+                                print("Impate")
+                                return
+                            }
+                            
+                            //check for win condition or draw
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                                 
-                            }.onTapGesture {
+                                let maquinaPosicao = determinaMaquinaMoverPosicao(in: movimentos )
+                                movimentos[maquinaPosicao] = Mover(jogador: .maquina, quadroIndex: maquinaPosicao)
+                                jogouFicaSemJogar =  false
                                 
-                                if isSquareOccupied(in: movimentos, forIndex: i){ return }
-                                movimentos[i] = Move(jogador: .humano, quadroIndex: i)
-                              //  movimentos[i] = Move(jogador: partidaDoJogador ? .humano: .maquina, quadroIndex: i)
-                                //partidaDoJogador.toggle()
-                                
-                                //check for win condition or draw
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                                    
-                                    let maquinaPosicao = determinaMaquinaMoverPosicao(in: movimentos )
-                                    movimentos[maquinaPosicao] = Move(jogador: .maquina, quadroIndex: maquinaPosicao)
-                                    
+                                if verificarVencedor(for: .maquina, in: movimentos){
+                                    print("Vitoria da maquina")
+                                    return
                                 }
+                                if verificaImpate(in: movimentos){
+                                    print("Impate")
+                                    return
+                                }
+                            }
                         }
                     }
                 }
                 // Cria um espaço vazio abaixo do conteúdo.
                 Spacer()
             }
+            .disabled(jogouFicaSemJogar)
             //Adiciona preenchimento ao redor do conteúdo para criar um espaço adicional.
             .padding()
             
         }
     }
-    func isSquareOccupied(in moves: [Move?], forIndex index: Int) -> Bool {
+    func posicaoOcupada(in moves: [Mover?], forIndex index: Int) -> Bool {
         return moves.contains(where: { $0?.quadroIndex == index })
     }
     
-    func determinaMaquinaMoverPosicao(in moves: [Move?]) -> Int{
+    func determinaMaquinaMoverPosicao(in moves: [Mover?]) -> Int{
         var movimentaPosicao = Int.random(in: 0..<9)
         
-        while isSquareOccupied(in: moves, forIndex: movimentaPosicao) {
-             movimentaPosicao = Int.random(in: 0..<9)
+        while posicaoOcupada(in: moves, forIndex: movimentaPosicao) {
+            movimentaPosicao = Int.random(in: 0..<9)
         }
         
-    return movimentaPosicao
+        return movimentaPosicao
+    }
+    
+    func verificarVencedor(for jogador: Jogador, in movimento: [Mover?]) -> Bool{
+        
+        let vitoriaPadrao: Set<Set<Int>> = [[0, 1, 2], [3, 4, 5], [6, 7 , 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+        
+        let movimentoJogador = movimento.compactMap {$0}.filter { $0.jogador == jogador }
+        let playerPositions = Set(movimentoJogador.map { $0.quadroIndex})
+       
+        for padrao in vitoriaPadrao {
+              if padrao.isSubset(of: playerPositions) {
+                  return true
+              }
+          }
+        
+        return false
+    }
+    func verificaImpate(in movimentos: [Mover?])-> Bool{
+        return movimentos.compactMap{ $0 }.count == 9
     }
 }
+
 /* Aqui, estamos definindo uma enumeração chamada Jogador. Essa enumeração possui dois casos: jogador e maquina, que representam os possíveis jogadores em um jogo. */
 enum Jogador{
     case humano, maquina
@@ -92,7 +140,7 @@ enum Jogador{
 /* struct Move {: Estamos definindo uma estrutura chamada Move. Essa estrutura possui duas propriedades:
  jogador: uma instância da enumeração Jogador, que representa o jogador responsável pela jogada.
  quadroIndex: um inteiro que representa o índice do quadro (ou posição) em que a jogada foi feita. */
-struct Move {
+struct Mover {
     let jogador: Jogador
     let  quadroIndex: Int
     
