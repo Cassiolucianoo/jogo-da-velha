@@ -22,8 +22,60 @@ struct ContentView: View {
         GeometryReader{ geometry in
             Color(.yellow).opacity(0.9)
                 .ignoresSafeArea()
+           
             VStack {
                 Spacer()
+                HStack{
+                    ZStack {
+                        Image("vs2")
+                            .resizable()
+                            .zIndex(1) // Define a bolinha vermelha para a frente
+                            .frame(width: 100, height: 100)
+                        
+                        Image("homer")
+                            .resizable()
+                            .frame(width: 150, height: 170)
+                            .scaledToFill()
+                            .frame(width: 160, height: 160)
+                            .clipShape(Circle())
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 100)
+                                    .stroke(Color.white, lineWidth: 6)
+                            )
+                            .padding(.trailing, 200)
+                        VStack {
+                                 Spacer()
+                                 
+                                 Text("Homer : 10")
+                                .font(.simpsonsFont(size: 14))
+                                     .foregroundColor(.black)
+                                     .padding(.bottom, 8)
+                             }     .padding(.trailing, 200)
+                        
+                        
+                            
+                    Image("velhadogato")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 160, height: 160)
+                        .clipShape(Circle())
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 100)
+                                .stroke(Color.white, lineWidth: 6)
+                        )
+                        .padding(.leading, 200)
+                   // Alinhar verticalmente no centro
+                        VStack {
+                                 Spacer()
+                                 
+                                 Text("Velha :  2")
+                                     .foregroundColor(.black)
+                                     .padding(.bottom, 8)
+                             }     .padding(.leading, 200)
+                        
+                    }
+                 
+                }
                 
                 /* LazyVGrid(columns: colunas) {: LazyVGrid é um contêiner de visualização que organiza as visualizações em um layout de grade verticalmente. O parâmetro columns define o número de colunas na grade.*/
                 LazyVGrid(columns: colunas, spacing: 0){
@@ -89,12 +141,13 @@ struct ContentView: View {
                         }
                     }
                 }
+                .padding()
                 // Cria um espaço vazio abaixo do conteúdo.
-                Spacer()
+               
             }
             .disabled(jogouFicaSemJogar)
             //Adiciona preenchimento ao redor do conteúdo para criar um espaço adicional.
-            .padding()
+            .padding(.bottom, 70)
             
         }
     }
@@ -150,7 +203,7 @@ struct Mover {
      Se jogador for igual a .humano, a propriedade retorna a string "donut1".
      Caso contrário, se jogador for igual a .jogador, a propriedade retorna a string "donut2". */
     var indicarJogador: String{
-        return jogador == .humano ? "donut1" : "donut2"
+        return jogador == .humano ? "donut1" : "gato"
         
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF78232B2A1EF96B0037D8B8 /* file.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78232A2A1EF96B0037D8B8 /* file.swift */; };
 		DFC8B6C62A1C598A000F9738 /* jogo_da_velhaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC8B6C52A1C598A000F9738 /* jogo_da_velhaApp.swift */; };
 		DFC8B6C82A1C598A000F9738 /* initView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC8B6C72A1C598A000F9738 /* initView.swift */; };
 		DFC8B6CA2A1C598D000F9738 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC8B6C92A1C598D000F9738 /* Assets.xcassets */; };
@@ -34,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF7823282A1EF8E50037D8B8 /* akbar.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = akbar.ttf; sourceTree = "<group>"; };
+		DF7823292A1EF8E60037D8B8 /* Simpsonfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Simpsonfont.ttf; sourceTree = "<group>"; };
+		DF78232A2A1EF96B0037D8B8 /* file.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = file.swift; sourceTree = "<group>"; };
 		DFC8B6C22A1C598A000F9738 /* jogo-da-velha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "jogo-da-velha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC8B6C52A1C598A000F9738 /* jogo_da_velhaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jogo_da_velhaApp.swift; sourceTree = "<group>"; };
 		DFC8B6C72A1C598A000F9738 /* initView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = initView.swift; sourceTree = "<group>"; };
@@ -71,6 +75,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF7823272A1EF8770037D8B8 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				DF7823282A1EF8E50037D8B8 /* akbar.ttf */,
+				DF7823292A1EF8E60037D8B8 /* Simpsonfont.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		DFC8B6B92A1C598A000F9738 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +144,8 @@
 		DFE209582A1C6DCA0010B7C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DF78232A2A1EF96B0037D8B8 /* file.swift */,
+				DF7823272A1EF8770037D8B8 /* Font */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -266,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFC8B6C82A1C598A000F9738 /* initView.swift in Sources */,
+				DF78232B2A1EF96B0037D8B8 /* file.swift in Sources */,
 				DFC8B6C62A1C598A000F9738 /* jogo_da_velhaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
