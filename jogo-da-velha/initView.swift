@@ -25,13 +25,17 @@ struct ContentView: View {
            
             VStack {
                 Spacer()
+                Text("LOUCA DOS GATOS")
+                    .font(.custom("ChalkboardSE-Bold", size: 20)) // Define a fonte personalizada e o tamanho
+                    .fontWeight(.bold)
+                   
                 HStack{
                     ZStack {
                         Image("vs2")
                             .resizable()
                             .zIndex(1) // Define a bolinha vermelha para a frente
                             .frame(width: 100, height: 100)
-                        
+            
                         Image("homer")
                             .resizable()
                             .frame(width: 150, height: 170)
@@ -46,14 +50,18 @@ struct ContentView: View {
                         VStack {
                                  Spacer()
                                  
-                                 Text("Homer : 10")
-                                .font(.simpsonsFont(size: 14))
-                                     .foregroundColor(.black)
-                                     .padding(.bottom, 8)
+                            Text("  HOMER : 10  ")
+                                .font(.custom("ChalkboardSE-Bold", size: 15))
+                                .font(.body)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .background(Color .blue)
+                                .opacity(0.8)
+                                .padding()
+                                     
+
                              }     .padding(.trailing, 200)
                         
-                        
-                            
                     Image("velhadogato")
                         .resizable()
                         .scaledToFill()
@@ -68,11 +76,19 @@ struct ContentView: View {
                         VStack {
                                  Spacer()
                                  
-                                 Text("Velha :  2")
-                                     .foregroundColor(.black)
-                                     .padding(.bottom, 8)
+                            Text(" ELEANOR : 2 ")
+                                .font(.custom("ChalkboardSE-Bold", size: 15))
+                                .font(.body)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .background(Color .red)
+                                .opacity(0.8)
+                                .padding()
+                          
+                                
+                                
                              }     .padding(.leading, 200)
-                        
+  
                     }
                  
                 }
@@ -142,6 +158,7 @@ struct ContentView: View {
                     }
                 }
                 .padding()
+                
                 // Cria um espaço vazio abaixo do conteúdo.
                
             }
@@ -151,6 +168,17 @@ struct ContentView: View {
             
         }
     }
+    
+    init(){
+        for familyName in UIFont.familyNames{
+            print(familyName)
+            
+            for fontName in UIFont.fontNames(forFamilyName: familyName){
+                print("-- \(fontName)")
+            }
+        }
+    }
+    
     func posicaoOcupada(in moves: [Mover?], forIndex index: Int) -> Bool {
         return moves.contains(where: { $0?.quadroIndex == index })
     }

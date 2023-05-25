@@ -10,7 +10,7 @@ import SwiftUI
 
 extension Font {
     static func simpsonsFont(size: CGFloat) -> Font {
-        return Font.custom("Simpsonfont", size: size)
+        return Font.custom("gameovercre1", size: size)
     }
 
 }

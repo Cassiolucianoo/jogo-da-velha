@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF540E612A1F26ED000F34CB /* Simpsonfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DF540E632A1F26ED000F34CB /* Simpsonfont.ttf */; };
+		DF540E642A1F2A71000F34CB /* gameovercre1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DF540E662A1F2A71000F34CB /* gameovercre1.ttf */; };
+		DF540E6B2A1F320E000F34CB /* gameovercre1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DF24FBD32A1F140E00C2A042 /* gameovercre1.ttf */; };
 		DF78232B2A1EF96B0037D8B8 /* file.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78232A2A1EF96B0037D8B8 /* file.swift */; };
 		DFC8B6C62A1C598A000F9738 /* jogo_da_velhaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC8B6C52A1C598A000F9738 /* jogo_da_velhaApp.swift */; };
 		DFC8B6C82A1C598A000F9738 /* initView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC8B6C72A1C598A000F9738 /* initView.swift */; };
@@ -35,8 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DF7823282A1EF8E50037D8B8 /* akbar.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = akbar.ttf; sourceTree = "<group>"; };
-		DF7823292A1EF8E60037D8B8 /* Simpsonfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Simpsonfont.ttf; sourceTree = "<group>"; };
+		DF24FBD32A1F140E00C2A042 /* gameovercre1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = gameovercre1.ttf; path = "/Users/cassio/Documents/GitHub/jogo-da-velha/jogo-da-velha/Font/Base.lproj/gameovercre1.ttf"; sourceTree = "<absolute>"; };
+		DF540E622A1F26ED000F34CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/Simpsonfont.ttf; sourceTree = "<group>"; };
+		DF540E652A1F2A71000F34CB /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/gameovercre1.ttf; sourceTree = "<group>"; };
+		DF540E692A1F2F03000F34CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/gameovercre1.ttf; sourceTree = "<group>"; };
+		DF540E6A2A1F2F06000F34CB /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Simpsonfont.ttf; sourceTree = "<group>"; };
 		DF78232A2A1EF96B0037D8B8 /* file.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = file.swift; sourceTree = "<group>"; };
 		DFC8B6C22A1C598A000F9738 /* jogo-da-velha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "jogo-da-velha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC8B6C52A1C598A000F9738 /* jogo_da_velhaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jogo_da_velhaApp.swift; sourceTree = "<group>"; };
@@ -78,8 +84,8 @@
 		DF7823272A1EF8770037D8B8 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				DF7823282A1EF8E50037D8B8 /* akbar.ttf */,
-				DF7823292A1EF8E60037D8B8 /* Simpsonfont.ttf */,
+				DF540E662A1F2A71000F34CB /* gameovercre1.ttf */,
+				DF540E632A1F26ED000F34CB /* Simpsonfont.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -107,9 +113,12 @@
 		DFC8B6C42A1C598A000F9738 /* jogo-da-velha */ = {
 			isa = PBXGroup;
 			children = (
-				DFE209582A1C6DCA0010B7C6 /* View */,
+				DF24FBD32A1F140E00C2A042 /* gameovercre1.ttf */,
+				DF78232A2A1EF96B0037D8B8 /* file.swift */,
 				DFC8B6C52A1C598A000F9738 /* jogo_da_velhaApp.swift */,
 				DFC8B6C72A1C598A000F9738 /* initView.swift */,
+				DF7823272A1EF8770037D8B8 /* Font */,
+				DFE209582A1C6DCA0010B7C6 /* View */,
 				DFC8B6C92A1C598D000F9738 /* Assets.xcassets */,
 				DFC8B6CB2A1C598D000F9738 /* Preview Content */,
 			);
@@ -144,8 +153,6 @@
 		DFE209582A1C6DCA0010B7C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DF78232A2A1EF96B0037D8B8 /* file.swift */,
-				DF7823272A1EF8770037D8B8 /* Font */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,6 +262,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFC8B6CD2A1C598D000F9738 /* Preview Assets.xcassets in Resources */,
+				DF540E642A1F2A71000F34CB /* gameovercre1.ttf in Resources */,
+				DF540E612A1F26ED000F34CB /* Simpsonfont.ttf in Resources */,
+				DF540E6B2A1F320E000F34CB /* gameovercre1.ttf in Resources */,
 				DFC8B6CA2A1C598D000F9738 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +327,27 @@
 			targetProxy = DFC8B6DD2A1C598D000F9738 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DF540E632A1F26ED000F34CB /* Simpsonfont.ttf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DF540E622A1F26ED000F34CB /* Base */,
+				DF540E6A2A1F2F06000F34CB /* en */,
+			);
+			name = Simpsonfont.ttf;
+			sourceTree = "<group>";
+		};
+		DF540E662A1F2A71000F34CB /* gameovercre1.ttf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DF540E652A1F2A71000F34CB /* en */,
+				DF540E692A1F2F03000F34CB /* Base */,
+			);
+			name = gameovercre1.ttf;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DFC8B6E42A1C598D000F9738 /* Debug */ = {
@@ -443,11 +474,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"jogo-da-velha/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "jogo-da-velha/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -471,11 +504,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"jogo-da-velha/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "jogo-da-velha/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
