@@ -15,6 +15,10 @@ struct ContentView: View {
     
     @State private var movimentos: [Mover?] = Array(repeating: nil, count: 9)
     @State private var jogouFicaSemJogar = false
+    @State private var alertItem: AlertItem?
+    @State private var imgStatusH =  true
+    @State private var imgStatusV =  true
+    
     
     var body: some View {
         
@@ -28,6 +32,8 @@ struct ContentView: View {
                 Text("LOUCA DOS GATOS")
                     .font(.custom("ChalkboardSE-Bold", size: 20)) // Define a fonte personalizada e o tamanho
                     .fontWeight(.bold)
+                
+                
                    
                 HStack{
                     ZStack {
@@ -36,7 +42,7 @@ struct ContentView: View {
                             .zIndex(1) // Define a bolinha vermelha para a frente
                             .frame(width: 100, height: 100)
             
-                        Image("homer")
+                        Image(imgStatusH ? "homer" :"doo3")
                             .resizable()
                             .frame(width: 150, height: 170)
                             .scaledToFill()
@@ -50,8 +56,8 @@ struct ContentView: View {
                         VStack {
                                  Spacer()
                                  
-                            Text("  HOMER : 10  ")
-                                .font(.custom("ChalkboardSE-Bold", size: 15))
+                            Text("  HOMER  ")
+                                .font(.custom("ChalkboardSE-Bold", size: 20))
                                 .font(.body)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
@@ -59,10 +65,9 @@ struct ContentView: View {
                                 .opacity(0.8)
                                 .padding()
                                      
-
                              }     .padding(.trailing, 200)
                         
-                    Image("velhadogato")
+                        Image(imgStatusV ? "velhadogato" : "velhaperde")
                         .resizable()
                         .scaledToFill()
                         .frame(width: 160, height: 160)
@@ -76,8 +81,8 @@ struct ContentView: View {
                         VStack {
                                  Spacer()
                                  
-                            Text(" ELEANOR : 2 ")
-                                .font(.custom("ChalkboardSE-Bold", size: 15))
+                            Text(" ELEANOR ")
+                                .font(.custom("ChalkboardSE-Bold", size: 20))
                                 .font(.body)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
@@ -122,23 +127,25 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                             
                         }.onTapGesture {
-                            
+                           
                             if posicaoOcupada(in: movimentos, forIndex: i){ return }
                             movimentos[i] = Mover(jogador: .humano, quadroIndex: i)
-                            jogouFicaSemJogar = true
+                          
                             //  movimentos[i] = Move(jogador: partidaDoJogador ? .humano: .maquina, quadroIndex: i)
                             //partidaDoJogador.toggle()
-                            
+ //homer
                             if verificarVencedor(for: .humano, in: movimentos){
-                                print("Vitoria do homer")
+                                alertItem = AlertaContexto.hGanha
+                                imgStatusV.toggle()
                                 return
                             }
                             if verificaImpate(in: movimentos){
-                                print("Impate")
+                                alertItem = AlertaContexto.nGanha
                                 return
                             }
-                            
+                            jogouFicaSemJogar = true
                             //check for win condition or draw
+ //velha
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                                 
                                 let maquinaPosicao = determinaMaquinaMoverPosicao(in: movimentos )
@@ -146,11 +153,12 @@ struct ContentView: View {
                                 jogouFicaSemJogar =  false
                                 
                                 if verificarVencedor(for: .maquina, in: movimentos){
-                                    print("Vitoria da maquina")
+                                    alertItem = AlertaContexto.mGanha
+                                    imgStatusH.toggle()
                                     return
                                 }
                                 if verificaImpate(in: movimentos){
-                                    print("Impate")
+                                    alertItem = AlertaContexto.nGanha
                                     return
                                 }
                             }
@@ -166,27 +174,33 @@ struct ContentView: View {
             //Adiciona preenchimento ao redor do conteúdo para criar um espaço adicional.
             .padding(.bottom, 70)
             
-        }
-    }
-    
-    init(){
-        for familyName in UIFont.familyNames{
-            print(familyName)
+            .alert(item: $alertItem, content: { alertaConteudo in
+                Alert(title: alertaConteudo.titulo,
+                      message: alertaConteudo.mensagem,
+                      dismissButton: .default(alertaConteudo.botaoTitle, action: { reiniciarPartida() }))
+            })
             
-            for fontName in UIFont.fontNames(forFamilyName: familyName){
-                print("-- \(fontName)")
-            }
         }
     }
     
-    func posicaoOcupada(in moves: [Mover?], forIndex index: Int) -> Bool {
-        return moves.contains(where: { $0?.quadroIndex == index })
+//    init(){
+//        for familyName in UIFont.familyNames{
+//            print(familyName)
+//
+//            for fontName in UIFont.fontNames(forFamilyName: familyName){
+//                print("-- \(fontName)")
+//            }
+//        }
+//    }
+    
+    func posicaoOcupada(in movimentos: [Mover?], forIndex index: Int) -> Bool {
+        return movimentos.contains(where: { $0?.quadroIndex == index })
     }
     
-    func determinaMaquinaMoverPosicao(in moves: [Mover?]) -> Int{
+    func determinaMaquinaMoverPosicao(in movimentos: [Mover?]) -> Int{
         var movimentaPosicao = Int.random(in: 0..<9)
         
-        while posicaoOcupada(in: moves, forIndex: movimentaPosicao) {
+        while posicaoOcupada(in: movimentos, forIndex: movimentaPosicao) {
             movimentaPosicao = Int.random(in: 0..<9)
         }
         
@@ -210,6 +224,12 @@ struct ContentView: View {
     }
     func verificaImpate(in movimentos: [Mover?])-> Bool{
         return movimentos.compactMap{ $0 }.count == 9
+    }
+    
+    func reiniciarPartida(){
+        movimentos = Array(repeating: nil, count: 9)
+        imgStatusH = true
+        imgStatusV = true
     }
 }
 
