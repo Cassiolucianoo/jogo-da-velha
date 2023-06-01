@@ -3,7 +3,7 @@
 O jogo da velha é um aplicativo desenvolvido em SwiftUI utilizando a arquitetura MVVM (Model-View-ViewModel).
 
 # Screenshots
-<img src="Screenshots/Inicio.jpg" width="250" />
-<img src="Screenshots/Homerganha.jpg" width="250" />
-<img src="Screenshots/homerperde.jpg" width="250" />
-<img src="Screenshots/ninguemganha.jpg" width="250" />
+<img src="Screenshots/Inicio.png" width="250" />
+<img src="Screenshots/Homerganha.png" width="250" />
+<img src="Screenshots/homerperde.png" width="250" />
+<img src="Screenshots/ninguemganha.png" width="250" />
